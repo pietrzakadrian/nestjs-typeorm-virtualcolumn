@@ -10,7 +10,8 @@ export class UserService {
     const queryBuilder = this._userRepository.createQueryBuilder('user');
 
     queryBuilder.addSelect(
-      "user.firstName || ' ' || user.lastName as user_fullName",
+      "user.firstName || ' ' || user.lastName",
+      'user_fullName',
     );
 
     return queryBuilder.getRawOne();
