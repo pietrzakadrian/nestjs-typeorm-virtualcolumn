@@ -9,6 +9,10 @@ export class UserService {
   public async getUser(): Promise<UserEntity> {
     const queryBuilder = this._userRepository.createQueryBuilder('user');
 
-    return queryBuilder.getOne();
+    queryBuilder.addSelect(
+      "user.firstName || ' ' || user.lastName as user_fullName",
+    );
+
+    return queryBuilder.getRawOne();
   }
 }
