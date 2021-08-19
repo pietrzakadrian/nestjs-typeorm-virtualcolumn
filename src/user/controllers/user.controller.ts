@@ -6,8 +6,13 @@ import { UserService } from '../services/user.service';
 export class UserController {
   constructor(private readonly _userService: UserService) {}
 
-  @Get()
-  public async getUser(): Promise<UserEntity> {
+  @Get('many')
+  public async getUsers(): Promise<UserEntity[] | undefined> {
+    return this._userService.getUsers();
+  }
+
+  @Get('one')
+  public async getUser(): Promise<UserEntity | undefined> {
     return this._userService.getUser();
   }
 }

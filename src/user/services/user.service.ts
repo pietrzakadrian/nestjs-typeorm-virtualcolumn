@@ -6,8 +6,24 @@ import { UserRepository } from '../repositories/user.repository';
 export class UserService {
   constructor(private readonly _userRepository: UserRepository) {}
 
-  public async getUser(): Promise<UserEntity> {
+  public async getUsers(): Promise<UserEntity[] | undefined> {
     const queryBuilder = this._userRepository.createQueryBuilder('user');
+
+    queryBuilder.addSelect(
+      "user.firstName || ' ' || user.lastName",
+      'fullName',
+    );
+
+    return queryBuilder.getMany();
+  }
+
+  public async getUser(): Promise<UserEntity | undefined> {
+    const queryBuilder = this._userRepository.createQueryBuilder('user');
+
+    queryBuilder.addSelect(
+      "user.firstName || ' ' || user.lastName",
+      'fullName',
+    );
 
     return queryBuilder.getOne();
   }
