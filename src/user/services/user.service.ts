@@ -6,7 +6,7 @@ import { UserRepository } from '../repositories/user.repository';
 export class UserService {
   constructor(private readonly _userRepository: UserRepository) {}
 
-  public async getUser(): Promise<UserEntity> {
+  public async getUser(): Promise<UserEntity | undefined> {
     const queryBuilder = this._userRepository.createQueryBuilder('user');
 
     return queryBuilder.getOne();

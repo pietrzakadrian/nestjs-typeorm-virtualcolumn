@@ -7,7 +7,7 @@ export class UserController {
   constructor(private readonly _userService: UserService) {}
 
   @Get()
-  public async getUser(): Promise<UserEntity> {
+  public async getUser(): Promise<UserEntity | undefined> {
     return this._userService.getUser();
   }
 }
