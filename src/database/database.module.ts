@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { UserSubscriber } from 'src/user/subscribers/user.subscriber';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
         database: configService.get('POSTGRES_DB_NAME'),
         entities: [__dirname + '/../**/*.entity.{js,ts}'],
         synchronize: true,
+        subscribers: [UserSubscriber],
       }),
     }),
   ],

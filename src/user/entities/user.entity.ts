@@ -10,4 +10,6 @@ export class UserEntity {
 
   @Column()
   public lastName: string;
+
+  public fullName: string;
 }
