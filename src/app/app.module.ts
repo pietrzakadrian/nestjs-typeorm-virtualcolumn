@@ -8,7 +8,6 @@ import { DatabaseModule } from '../database/database.module';
   imports: [
     ConfigModule.forRoot({
       validationSchema: Joi.object({
-        PORT: Joi.number().required(),
         POSTGRES_HOST: Joi.string().required(),
         POSTGRES_PORT: Joi.number().required(),
         POSTGRES_USERNAME: Joi.string().required(),
