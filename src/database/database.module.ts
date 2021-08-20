@@ -17,6 +17,7 @@ import { UserSubscriber } from 'src/user/subscribers/user.subscriber';
         database: configService.get('POSTGRES_DB_NAME'),
         entities: [__dirname + '/../**/*.entity.{js,ts}'],
         synchronize: true,
+        logging: true,
         subscribers: [UserSubscriber],
       }),
     }),
