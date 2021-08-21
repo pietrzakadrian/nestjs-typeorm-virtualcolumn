@@ -10,4 +10,7 @@ export class UserEntity {
 
   @Column()
   public lastName: string;
+
+  @Column({ select: false, nullable: true, insert: false, update: false })
+  public fullName: string;
 }
